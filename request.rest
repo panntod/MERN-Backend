@@ -1,0 +1,27 @@
+###
+GET http://localhost:5000/users/
+
+###
+POST http://localhost:5000/users/
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "age": 30,
+  "address": "123 Main Street",
+  "email": "john@example.com"
+}
+
+###
+PUT http://localhost:5000/users/656db75166dc9da2c25fdf13
+Content-Type: application/json
+
+{
+  "name": "John",
+  "age": 30,
+  "address": "123 Main Street",
+  "email": "john@example.com"
+}
+
+###
+DELETE  http://localhost:5000/users/656db75166dc9da2c25fdf13
