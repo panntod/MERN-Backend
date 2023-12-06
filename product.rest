@@ -1,0 +1,29 @@
+###
+GET http://localhost:5000/product/
+
+
+###
+POST http://localhost:5000/product/
+Content-Type: application/json
+
+{
+  "name": "Meal",
+  "price": 30,
+  "type": "Food",
+  "idUpload": "65692561806a852003439133"
+}
+
+###
+PUT http://localhost:5000/product/
+Content-Type: application/json
+
+{
+  "id": "656e5db24741438b1d30bb8c",
+  "name": "Juice Orange",
+  "price": 30,
+  "type": "Drink",
+  "idUpload": "656924b440b8c60a3326aab4"
+}
+
+###
+DELETE  http://localhost:5000/product/656db75166dc9da2c25fdf13
