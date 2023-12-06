@@ -8,12 +8,3 @@ exports.connectDB = async () => {
     console.log(error.message);
  }
 };
-
-exports.closeDB = async () => {
- try {
-    await mongoose.connection.close();
-    console.log("Connection closed");
- } catch (error) {
-    console.log(error.message);
- }
-};
