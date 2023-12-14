@@ -25,11 +25,11 @@ router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const deletePhoto = await photoController.deletePhoto(id);
-    res.json({ message: "Photo update successfully", deletePhoto });
+
     if(!deletePhoto){
-        res.status(404).json({ message: 'Product not found or already deleted'})
+        res.status(404).json({ message: 'Photo not found or already deleted'})
     } else {
-        res.json({ message: 'success Deleted Product'})
+      res.json({ message: "Photo deleted successfully", deletePhoto });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
