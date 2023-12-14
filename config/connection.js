@@ -1,9 +1,13 @@
 const mongoose = require("mongoose");
 
-exports.connectDB = async () => {
+exports.connectDB = async ( app, PORT ) => {
  try {
-    const conn = await mongoose.connect("mongodb://127.0.0.1:27017/crud_mongo");
-    console.log("Server up and running");
+    await mongoose.connect("mongodb://127.0.0.1:27017/crud_mongo")
+    .then(() => {
+      app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+      });
+    });
  } catch (error) {
     console.log(error.message);
  }
