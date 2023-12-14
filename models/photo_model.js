@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 
 const PhotoSchema = new mongoose.Schema({
-  namaFile: String,
-  data: Buffer
+  photoData: {
+    type: String,
+    required: true
+  }
 });
 
 const Photo = mongoose.model('Photo', PhotoSchema);
