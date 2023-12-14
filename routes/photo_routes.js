@@ -12,31 +12,20 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { namaFile, data } = req.body;
+  const { photoData } = req.body;
   try {
-    const newPhoto = await photoController.addPhoto(namaFile, data);
+    const newPhoto = await photoController.addPhoto(photoData);
     res.json({ message: "Photo added successfully", newPhoto });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-router.put("/", async (req, res) => {
-  const { id, namaFile, data } = req.body;
-  try {
-    const updatePhoto = await photoController.updatePhoto(id, namaFile, data);
-    res.json({ message: "Photo update successfully", updatePhoto });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const deletePhoto = await photoController.deletePhoto(id);
-    res.json({ message: "Photo update successfully", updatePhoto });
+    res.json({ message: "Photo update successfully", deletePhoto });
     if(!deletePhoto){
         res.status(404).json({ message: 'Product not found or already deleted'})
     } else {
