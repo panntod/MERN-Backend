@@ -1,8 +1,6 @@
-const { connectDB } = require("../config/connection");
 const Product = require("../models/product_model");
 
 exports.getProduct = async () => {
-  await connectDB();
   try {
     const products = await Product.find({}).populate("idUpload", "name");
     return products;
@@ -13,7 +11,6 @@ exports.getProduct = async () => {
 };
 
 exports.addProduct = async (name, type, price, idUpload) => {
-  await connectDB();
   try {
     const newProduct = new Product({ name, type, price, idUpload });
     const insertedProduct = await newProduct.save();
@@ -25,7 +22,6 @@ exports.addProduct = async (name, type, price, idUpload) => {
 };
 
 exports.updateProduct = async (id, name, type, price, idUpload) => {
-  await connectDB();
   try {
     const updateProduct = await Product.findByIdAndUpdate(
       id,
@@ -47,7 +43,6 @@ exports.updateProduct = async (id, name, type, price, idUpload) => {
 };
 
 exports.deleteProduct = async (id) => {
-  await connectDB();
   try {
     const deletedProduct = await Product.findByIdAndDelete(id);
 
