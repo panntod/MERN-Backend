@@ -1,8 +1,6 @@
-const { connectDB } = require("../config/connection");
 const User = require("../models/user_model");
 
 exports.getUser = async () => {
-  await connectDB();
   try {
     const users = await User.find({});
     return users;
@@ -13,7 +11,6 @@ exports.getUser = async () => {
 };
 
 exports.addUser = async (name, age, address, email, password) => {
-  await connectDB();
   try {
     const newUser = new User({ name, age, address, email, password });
     const insertedUser = await newUser.save();
@@ -25,7 +22,6 @@ exports.addUser = async (name, age, address, email, password) => {
 };
 
 exports.updateUser = async (id, name, age, address, email, password) => {
-  await connectDB();
   try {
     const existingUser = await User.findOne({ email });
 
@@ -55,7 +51,6 @@ exports.updateUser = async (id, name, age, address, email, password) => {
 };
 
 exports.deleteUser = async (id) => {
-  await connectDB();
   try {
     const deletedUser = await User.findByIdAndDelete(id);
 
@@ -73,7 +68,6 @@ exports.deleteUser = async (id) => {
 };
 
 exports.loginUser = async (email, password) => {
-  await connectDB();
   try {
     const user = await User.findOne({ email });
     if (!user) {
