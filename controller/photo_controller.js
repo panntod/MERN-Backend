@@ -42,7 +42,7 @@ exports.deletePhoto = async (id) => {
     if (!deletedPhoto) {
       console.log("Product not found or already deleted");
     } else {
-      console.log("Success Deleted User");
+      console.log("Success Deleted Photo");
     }
 
     return deletedPhoto;
